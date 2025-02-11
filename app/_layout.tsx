@@ -24,8 +24,8 @@ export default function RootLayout() {
     return null;
   }
   return (
-  <GestureHandlerRootView className="bg-white">
-    <Stack screenOptions={{ headerShown:false }}/>
+  <GestureHandlerRootView className="bg-white relative">  
+    <Stack screenOptions={{ headerShown: false }} />
   </GestureHandlerRootView>
   )
 }

@@ -31,6 +31,11 @@ import swim from "@/assets/icons/swim.png";
 import wifi from "@/assets/icons/wifi.png";
 import location from "@/assets/icons/location.png";
 import edit from "@/assets/icons/edit.png";
+import homeActive from "@/assets/icons/home-active.png";
+import explore from "@/assets/icons/explore.png";
+import exploreActive from "@/assets/icons/explore-active.png";
+import profile from "@/assets/icons/profile.png";
+import profileActive from "@/assets/icons/profile-active.png";
 
 export default {
   google,
@@ -66,4 +71,9 @@ export default {
   wifi,
   location,
   edit,
+  homeActive,
+  explore,
+  exploreActive,
+  profile,
+  profileActive,
 };

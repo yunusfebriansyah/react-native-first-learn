@@ -67,6 +67,62 @@ export const Card = ({ item }: FeaturedProps) => {
   )
 }
 
+export const HorizontalCard = ({ item }: FeaturedProps) => {
+
+  const router = useRouter()
+  
+  const moveToDetail = () => {
+    // redirect to detail page
+    router.push({
+      pathname: '/(root)/properties/Detail',
+      params: { slug: item.slug },
+    });
+  };
+
+  return (
+    <TouchableOpacity
+      className="border-red-500 w-full relative flex flex-row justify-start p-1"
+      onPress={ moveToDetail }
+    >
+      <View className='w-full p-3 rounded-lg bg-white shadow shadow-black-100/20 flex flex-row relative'>
+        
+        <View className='relative'>
+          <View className="flex flex-row items-center absolute px-2 top-1 right-1 bg-white/90 p-1 rounded-full z-50">
+            <Image source={icons.star} className="size-2.5" />
+            <Text className="text-xs font-rubik-bold text-primary-300 ml-0.5">
+              {item.rating}
+            </Text>
+          </View>
+
+          <Image source={item.image} className="size-24 rounded-lg" />
+        </View>
+
+        <View className="ms-2 w-60">
+          <View className='flex flex-row justify-between align-top'>
+            <Text className="text-base font-rubik-bold text-black-300 max-w-52">
+              {item.title}
+            </Text>
+            <Image
+              source={icons.heart}
+              className="w-5 h-5 mr-2"
+              tintColor="#191D31"
+            />
+          </View>
+          <View className='flex flex-row justify-between align-bottom mt-4'>
+            <Text className="text-xs font-rubik text-black-100 max-w-52">
+              {item.location}
+            </Text>
+            <Text className="text-base font-rubik-bold text-primary-300 me-2">
+              ${item.price}
+            </Text>
+          </View>
+        </View>
+        
+      </View>
+    </TouchableOpacity>
+  )
+}
+
 export const FeaturedCard = ({ item }: FeaturedProps) => {
   
   const router = useRouter()

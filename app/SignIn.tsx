@@ -3,7 +3,7 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import images from '@/constants/images'
 import icons from '@/constants/icons'
-import { Redirect } from 'expo-router'
+import { Redirect, router } from 'expo-router'
 
 const SignIn = () => {
 
@@ -28,7 +28,7 @@ const SignIn = () => {
           <Text className='text-base text-center font-rubik color-black-200'>Login to Real Scout with Google</Text>
           
           <TouchableOpacity
-              onPress={handleLogin}
+              onPress={()=> router.navigate('/')}
               className="bg-white shadow-md shadow-zinc-300 rounded-full w-full py-4 mt-5"
             >
             <View className="flex flex-row items-center justify-center">

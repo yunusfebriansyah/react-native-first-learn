@@ -27,7 +27,7 @@ const Filters = ({categories} : FilterProps) => {
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
-      className="mt-3 mb-2"
+      className="mt-3 mb-2 px-10"
     >
       {categories.map((item, index) => (
         <TouchableOpacity

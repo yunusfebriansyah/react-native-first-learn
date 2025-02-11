@@ -6,6 +6,8 @@ import { Card, FeaturedCard } from "@/components/Card";
 import { categories, featuredCards } from "@/constants/data";
 import Filters from "@/components/Filters";
 import { MasonryFlashList } from "@shopify/flash-list";
+import BottomNavigation from "@/components/BottomNavigation";
+import { Redirect } from "expo-router";
 
 export default function Index() {
 
@@ -13,7 +15,7 @@ export default function Index() {
 
   return (
     <SafeAreaView className="h-full bg-white">
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View className="px-10">
 
           {/* account */}
@@ -57,52 +59,53 @@ export default function Index() {
           {/* end featured */}
         </View>
 
-          {/* featured card */}
-          <FlatList
+        {/* featured card */}
+        <FlatList
+          data={featuredCards}
+          renderItem={({ item }) => (
+            <FeaturedCard item={item}/>
+          )}
+          keyExtractor={(item) => item.slug}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerClassName="flex gap-5 px-10"
+        />
+        {/* end featured card */}
+
+        {/* recomendation */}
+        <View className="mt-5 px-10">
+          <View className="flex flex-row items-center justify-between">
+            <Text className="text-xl font-rubik-bold text-black-300">
+              Our Recommendation
+            </Text>
+            <TouchableOpacity>
+              <Text className="text-base font-rubik-semibold text-primary-300">
+                See all
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <Filters categories={categories} />
+        {/* end recomendation */}
+
+        {/* card */}
+        <View className="px-8 bg-white">
+          <MasonryFlashList 
             data={featuredCards}
-            renderItem={({ item }) => (
-              <FeaturedCard item={item}/>
+            renderItem={({item}) => (
+              <Card item={item}/>
             )}
+            numColumns={2}
             keyExtractor={(item) => item.slug}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerClassName="flex gap-5 px-10"
+            showsVerticalScrollIndicator = {false}
+            estimatedItemSize={50}
           />
-          {/* end featured card */}
-
-          {/* recomendation */}
-          <View className="mt-5 px-10">
-              <View className="flex flex-row items-center justify-between">
-                <Text className="text-xl font-rubik-bold text-black-300">
-                  Our Recommendation
-                </Text>
-                <TouchableOpacity>
-                  <Text className="text-base font-rubik-semibold text-primary-300">
-                    See all
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              <Filters categories={categories} />
-          </View>
-          {/* end recomendation */}
-
-          {/* card */}
-          <View className="px-8 bg-white">
-            <MasonryFlashList 
-              data={featuredCards}
-              renderItem={({item}) => (
-                <Card item={item}/>
-              )}
-              numColumns={2}
-              keyExtractor={(item) => item.slug}
-              showsVerticalScrollIndicator = {false}
-              estimatedItemSize={50}
-            />
-          </View>
-          {/* end card */}
+        </View>
+        {/* end card */}
 
       </ScrollView>
+      <BottomNavigation />
     </SafeAreaView>
+      
   );
 }

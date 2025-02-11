@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Dimensions, Image, Platform, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, Dimensions, Image, Platform, TouchableOpacity, SafeAreaView } from 'react-native'
 import React from 'react'
 import images from '@/constants/images';
 import { router, useLocalSearchParams } from "expo-router";
@@ -15,7 +15,7 @@ const Detail = () => {
   const item = getDataBySlug(params.slug)
 
   return (
-    <View>
+    <SafeAreaView className='h-full bg-white'>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerClassName="pb-32 bg-white"
@@ -34,7 +34,7 @@ const Detail = () => {
           <View
             className="z-50 absolute inset-x-7"
             style={{
-              top: Platform.OS === "ios" ? 70 : 20,
+              top: Platform.OS === "ios" ? 20 : 20,
             }}
           >
             <View className="flex flex-row items-center w-full justify-between">
@@ -289,7 +289,7 @@ const Detail = () => {
         </View>
       </View>
 
-    </View>
+    </SafeAreaView>
   )
 }
 
